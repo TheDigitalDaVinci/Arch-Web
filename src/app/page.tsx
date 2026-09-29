@@ -38,9 +38,7 @@ export default function Home() {
     >
       <GSAPProvider>
         <LoadingScreen />
-        <CustomCursor />
         <Navigation />
-        <FloatingButtons />
 
         <main className="relative bg-background text-text overflow-hidden">
           <HeroSection />

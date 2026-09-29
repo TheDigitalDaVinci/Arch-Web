@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import CustomCursor from "@/components/CustomCursor";
+import FloatingButtons from "@/components/FloatingButtons";
 
 export const metadata: Metadata = {
   title: "White Rock Builders & Interiors | Crafting Timeless Spaces",
@@ -52,25 +54,27 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               description:
                 "Premium architecture, construction, and interior design company.",
               url: "https://whiterockbuilders.com",
-              telephone: "+1-310-555-0187",
-              email: "hello@whiterockbuilders.com",
+              telephone: "+91-9446518549",
+              email: "whiterockkerala@gmail.com",
               address: {
                 "@type": "PostalAddress",
-                streetAddress: "2847 Wilshire Boulevard, Suite 400",
-                addressLocality: "Los Angeles",
-                addressRegion: "CA",
-                postalCode: "90010",
-                addressCountry: "US",
+                streetAddress: "2nd Floor, Penta Plaza",
+                addressLocality: "North Paravur, Ernakulam",
+                addressRegion: "Kerala",
+                postalCode: "683513",
+                addressCountry: "IN",
               },
               sameAs: [
-                "https://instagram.com/whiterockbuilders",
-                "https://linkedin.com/company/whiterockbuilders",
+                "https://www.instagram.com/w.h.i.t.e_r.o.c.k/",
+                "https://www.youtube.com/@W.h.i.t.e.R.o.c.k",
               ],
             }),
           }}
         />
       </head>
       <body className="min-h-screen overflow-x-hidden bg-background text-text">
+        <CustomCursor />
+        <FloatingButtons />
         {children}
         {/* Noise overlay for premium grain texture */}
         <div className="noise-overlay" aria-hidden="true" />

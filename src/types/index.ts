@@ -34,6 +34,11 @@ export interface Testimonial {
   project: string;
 }
 
+export interface Render360Item {
+  title?: string;
+  url: string;
+}
+
 export interface Service {
   id: string;
   title: string;
@@ -45,6 +50,7 @@ export interface Service {
   photos?: string[];
   videos?: string[];
   render360Url?: string;
+  render360List?: Render360Item[];
 }
 
 export interface Statistic {

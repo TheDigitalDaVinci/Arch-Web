@@ -73,7 +73,12 @@ export default function ServiceDetailClient({
       ];
 
   const videos = service.videos || [];
-  const render360Url = service.render360Url || "";
+  const [active360Index, setActive360Index] = useState(0);
+
+  const render360List = service.render360List || (service.render360Url ? [{ title: `${service.title} 360° Tour`, url: service.render360Url }] : []);
+  const current360 = render360List[active360Index] || render360List[0];
+
+  const show360 = service.id !== "turnkey-projects";
 
   return (
     <div className="min-h-screen bg-secondary text-white selection:bg-accent selection:text-white">
@@ -167,7 +172,7 @@ export default function ServiceDetailClient({
                 Portfolio Showcase
               </p>
               <h2 className="font-heading text-2xl sm:text-4xl text-white">
-                Photos, Videos &amp; 360° VR
+                {show360 ? "Photos, Videos & 360° VR" : "Photos & Videos Showcase"}
               </h2>
             </div>
 
@@ -197,17 +202,19 @@ export default function ServiceDetailClient({
                 <span>Videos ({videos.length})</span>
               </button>
 
-              <button
-                onClick={() => setActiveTab("360")}
-                className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${
-                  activeTab === "360"
-                    ? "bg-accent text-secondary shadow-md"
-                    : "text-white/70 hover:text-white"
-                }`}
-              >
-                <HiOutlineEye size={16} />
-                <span>360° VR Renders</span>
-              </button>
+              {show360 && (
+                <button
+                  onClick={() => setActiveTab("360")}
+                  className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${
+                    activeTab === "360"
+                      ? "bg-accent text-secondary shadow-md"
+                      : "text-white/70 hover:text-white"
+                  }`}
+                >
+                  <HiOutlineEye size={16} />
+                  <span>360° VR Renders</span>
+                </button>
+              )}
             </div>
           </div>
 
@@ -240,63 +247,110 @@ export default function ServiceDetailClient({
                   </div>
                 </div>
               ))}
+
+              {/* Photo Upload Placeholder Card */}
+              <div className="group relative aspect-[4/3] flex flex-col items-center justify-center p-6 rounded-2xl border-2 border-dashed border-accent/30 bg-accent/[0.03] hover:bg-accent/[0.06] hover:border-accent/60 transition-all duration-300 text-center">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/10 text-accent mb-3 border border-accent/20 group-hover:scale-110 transition-transform">
+                  <HiOutlinePhotograph size={24} />
+                </div>
+                <span className="text-xs font-semibold uppercase tracking-wider text-accent mb-1">
+                  + Add Project Photo
+                </span>
+                <p className="text-[11px] text-white/50 max-w-[200px] leading-relaxed">
+                  Place images in <br />
+                  <code className="text-accent/80 font-mono">public/media/services/{service.id}/photos/</code>
+                </p>
+              </div>
             </div>
           )}
 
           {/* TAB 2: Video Showcase */}
           {activeTab === "videos" && (
             <div className="space-y-8">
-              {videos.length > 0 ? (
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                  {videos.map((videoSrc, idx) => (
-                    <div
-                      key={idx}
-                      className="overflow-hidden rounded-2xl border border-white/10 bg-black shadow-2xl"
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {videos.map((videoSrc, idx) => (
+                  <div
+                    key={idx}
+                    className="overflow-hidden rounded-2xl border border-white/10 bg-black shadow-2xl relative"
+                  >
+                    <video
+                      controls
+                      className="w-full aspect-video object-cover"
+                      src={videoSrc}
                     >
-                      <video
-                        controls
-                        className="w-full aspect-video object-cover"
-                        src={videoSrc}
-                      >
-                        Your browser does not support the video tag.
-                      </video>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-12 text-center max-w-2xl mx-auto">
-                  <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-accent/10 text-accent mb-6 border border-accent/20">
-                    <HiOutlineVideoCamera size={32} />
+                      Your browser does not support the video tag.
+                    </video>
                   </div>
-                  <h3 className="font-heading text-2xl text-white mb-3">
-                    Cinematic Videos Showcase
-                  </h3>
-                  <p className="text-sm text-white/70 leading-relaxed mb-6">
-                    Drop your project walkthrough video files (.mp4) directly into:
-                  </p>
-                  <code className="block rounded-lg bg-black/60 px-4 py-3 text-xs text-accent font-mono border border-white/10 select-all mb-6">
-                    public/media/services/{service.id}/videos/
-                  </code>
-                  <p className="text-xs text-white/50">
-                    Once added, your videos will automatically play and render directly on this page!
+                ))}
+
+                {/* Video Upload Placeholder Card */}
+                <div className="flex flex-col items-center justify-center p-8 rounded-2xl border-2 border-dashed border-accent/30 bg-accent/[0.03] hover:bg-accent/[0.06] hover:border-accent/60 transition-all duration-300 text-center aspect-video">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-accent/10 text-accent mb-4 border border-accent/20">
+                    <HiOutlineVideoCamera size={28} />
+                  </div>
+                  <span className="text-xs font-semibold uppercase tracking-widest text-accent mb-2">
+                    + Add Project Video
+                  </span>
+                  <p className="text-xs text-white/60 max-w-xs leading-relaxed">
+                    Place walkthrough videos (.mp4) in <br />
+                    <code className="text-accent/90 font-mono text-[11px] block mt-1">public/media/services/{service.id}/videos/</code>
                   </p>
                 </div>
-              )}
+              </div>
             </div>
           )}
 
           {/* TAB 3: 360° VR Render Viewer */}
-          {activeTab === "360" && (
+          {show360 && activeTab === "360" && (
             <div className="space-y-6">
-              {render360Url ? (
-                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-white/10 bg-black shadow-2xl">
-                  <iframe
-                    src={render360Url}
-                    title={`360 VR Render - ${service.title}`}
-                    className="h-full w-full border-0"
-                    allow="accelerometer; magnetometer; vr; gyroscope; fullscreen"
-                    allowFullScreen
-                  />
+              {render360List.length > 0 ? (
+                <div className="space-y-6">
+                  {/* Selector Pills for Multiple 360 Tours */}
+                  {render360List.length > 1 && (
+                    <div className="flex flex-wrap items-center gap-3 border-b border-white/10 pb-4">
+                      <span className="text-xs uppercase tracking-widest text-white/50 font-semibold mr-2">
+                        Select 360° Tour ({render360List.length}):
+                      </span>
+                      {render360List.map((item, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => setActive360Index(idx)}
+                          className={`rounded-lg px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition-all duration-300 border ${
+                            active360Index === idx
+                              ? "bg-accent border-accent text-secondary shadow-lg shadow-accent/20 scale-105"
+                              : "bg-white/5 border-white/10 text-white/80 hover:bg-white/10 hover:border-accent/40"
+                          }`}
+                        >
+                          {item.title || `Tour ${idx + 1}`}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+
+                  <div className="flex items-center justify-between px-2">
+                    <span className="text-xs uppercase tracking-widest text-accent font-semibold flex items-center gap-2">
+                      <HiOutlineEye size={16} /> {current360?.title || "Interactive 360° VR Spatial Tour"}
+                    </span>
+                    <a
+                      href={current360?.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs uppercase tracking-widest text-white/70 hover:text-accent transition-colors font-semibold underline underline-offset-4 flex items-center gap-1"
+                    >
+                      <span>Open Full Screen</span> ↗
+                    </a>
+                  </div>
+
+                  <div className="relative aspect-[16/9] min-h-[500px] lg:min-h-[650px] w-full overflow-hidden rounded-2xl border border-white/10 bg-black shadow-2xl">
+                    <iframe
+                      key={current360?.url}
+                      src={current360?.url}
+                      title={current360?.title || `360 VR Render - ${service.title}`}
+                      className="h-full w-full border-0 absolute inset-0"
+                      allow="accelerometer; magnetometer; vr; gyroscope; fullscreen"
+                      allowFullScreen
+                    />
+                  </div>
                 </div>
               ) : (
                 <div className="rounded-2xl border border-accent/20 bg-gradient-to-b from-white/[0.04] to-black/60 p-8 sm:p-12 text-center max-w-3xl mx-auto relative overflow-hidden">
