@@ -54,7 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               description:
                 "Premium architecture, construction, and interior design company.",
               url: "https://whiterockbuilders.com",
-              telephone: "+91-9446518549",
+              telephone: "+91 8075 588 549",
               email: "whiterockkerala@gmail.com",
               address: {
                 "@type": "PostalAddress",

@@ -609,10 +609,10 @@ export const companyInfo = {
   shortName: "White Rock",
   tagline: "Crafting Timeless Spaces",
   description: "We design and build premium residences, villas, commercial spaces and luxury interiors.",
-  phone: "+91 9446518549",
+  phone: "+91 8075 588 549",
   email: "whiterockkerala@gmail.com",
   address: "Main Office: 2nd Floor, Penta Plaza, North Paravur, Ernakulam | Branch: 1st Floor, KGM Arcade, Koorkenchery, Thrissur",
-  whatsapp: "+919446518549",
+  whatsapp: "+918075588549",
   social: {
     instagram: "https://www.instagram.com/w.h.i.t.e_r.o.c.k/",
     youtube: "https://www.youtube.com/@W.h.i.t.e.R.o.c.k",
