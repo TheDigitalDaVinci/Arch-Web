@@ -182,11 +182,12 @@ export default function Navigation() {
             <div className="flex items-center gap-4">
               {/* CTA Button — Desktop only */}
               <a
-                href="#contact"
-                onClick={(e) => handleNavClick(e, "#contact")}
+                href={companyInfo.consultationForm}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="magnetic-btn hidden rounded-full border border-accent bg-accent/10 px-6 py-2.5 text-[12px] font-semibold uppercase tracking-[0.15em] text-accent transition-all duration-300 hover:bg-accent hover:text-secondary lg:inline-flex"
                 data-cursor="link"
-                aria-label="Book a consultation"
+                aria-label="Book Consultation (opens Google Form)"
               >
                 Book Consultation
               </a>
@@ -251,10 +252,13 @@ export default function Navigation() {
           {/* CTA in overlay */}
           <a
             ref={(el) => setMenuItemRef(el, navLinks.length)}
-            href="#contact"
-            onClick={(e) => handleNavClick(e, "#contact")}
+            href={companyInfo.consultationForm}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setIsMenuOpen(false)}
             className="mt-4 rounded-full border border-accent bg-accent/10 px-8 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-accent transition-all duration-300 hover:bg-accent hover:text-secondary"
             data-cursor="link"
+            aria-label="Book Consultation (opens Google Form)"
           >
             Book Consultation
           </a>

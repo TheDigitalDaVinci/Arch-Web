@@ -72,8 +72,10 @@ export default function FloatingButtons() {
       {/* ===== Desktop "Contact Us" Side Button ===== */}
       {!isMobile && (
         <motion.a
-          href="#contact"
-          aria-label="Contact White Rock"
+          href={companyInfo.consultationForm}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Book Consultation / Contact White Rock"
           className="fixed right-0 top-1/2 z-50 origin-center -translate-y-1/2"
           initial={{ opacity: 0, x: 80 }}
           animate={{ opacity: 1, x: 0 }}
@@ -107,9 +109,11 @@ export default function FloatingButtons() {
           }}
         >
           <a
-            href="#contact"
+            href={companyInfo.consultationForm}
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center justify-center py-3.5"
-            aria-label="Contact White Rock"
+            aria-label="Book Consultation / Contact White Rock"
             data-cursor="link"
           >
             <span className="text-[12px] font-semibold uppercase tracking-[0.2em] text-accent">

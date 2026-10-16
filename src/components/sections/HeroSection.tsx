@@ -4,6 +4,7 @@ import { useRef, useEffect, useCallback } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { companyInfo } from "@/data/content";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -310,8 +311,11 @@ export default function HeroSection() {
             Explore Projects
           </a>
           <a
-            href="#contact"
+            href={companyInfo.consultationForm}
+            target="_blank"
+            rel="noopener noreferrer"
             className="hero-btn magnetic-btn inline-flex items-center justify-center rounded-full border border-white/30 px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white transition-colors hover:border-accent hover:text-accent"
+            aria-label="Book Consultation (opens Google Form)"
           >
             Book Consultation
           </a>

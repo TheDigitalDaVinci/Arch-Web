@@ -615,6 +615,7 @@ export const companyInfo = {
   whatsapp: "+918075588549",
   googleMaps: "https://share.google/eheHatE3KDkq9Mqks",
   mapEmbedUrl: "https://maps.google.com/maps?q=White+Rock+Foundations,+Penta+Plaza,+North+Paravur&hl=en&z=16&output=embed",
+  consultationForm: "https://forms.gle/pxzpvqgYn4fcNifN7",
   social: {
     instagram: "https://www.instagram.com/w.h.i.t.e_r.o.c.k/",
     youtube: "https://www.youtube.com/@W.h.i.t.e.R.o.c.k",

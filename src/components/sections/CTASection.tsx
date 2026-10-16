@@ -214,8 +214,11 @@ export default function CTASection() {
 
         <div className="cta-button-wrap flex flex-col items-center gap-6">
           <a
-            href="#contact"
+            href={companyInfo.consultationForm}
+            target="_blank"
+            rel="noopener noreferrer"
             className="magnetic-btn bg-accent text-secondary font-semibold text-lg rounded-full px-12 py-5 transition-all duration-300 hover:bg-accent-light hover:scale-105 hover:shadow-[0_0_40px_rgba(200,168,107,0.3)] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-secondary"
+            aria-label="Start Your Project (opens Consultation Form)"
           >
             Start Your Project
           </a>
