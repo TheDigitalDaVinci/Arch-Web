@@ -94,8 +94,21 @@ export default function ServiceDetailClient({
             <span>Back to All Services</span>
           </Link>
 
-          <Link href="/" className="font-heading text-xl font-bold tracking-wider text-white">
-            WHITE ROCK
+          <Link href="/" className="flex items-center">
+            {companyInfo.logo ? (
+              <Image
+                src={companyInfo.logo}
+                alt={companyInfo.name}
+                width={170}
+                height={40}
+                priority
+                className="h-8 w-auto object-contain transition-transform duration-300 hover:scale-[1.02] md:h-9"
+              />
+            ) : (
+              <span className="font-heading text-xl font-bold tracking-wider text-white">
+                WHITE ROCK
+              </span>
+            )}
           </Link>
 
           <a

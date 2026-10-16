@@ -1,7 +1,9 @@
 "use client";
 
 import { useRef, useState, useEffect, useCallback } from "react";
+import Image from "next/image";
 import gsap from "gsap";
+import { companyInfo } from "@/data/content";
 
 const SESSION_KEY = "whiterock_loaded";
 
@@ -123,16 +125,29 @@ export default function LoadingScreen() {
       <div className="flex flex-col items-center gap-8">
         {/* Logo */}
         <div ref={logoRef} className="flex flex-col items-center gap-2" style={{ opacity: 0 }}>
-          <span className="font-heading text-2xl font-semibold tracking-[0.3em] text-white sm:text-3xl md:text-4xl">
-            WHITE ROCK
-          </span>
-          <div className="flex items-center gap-3">
-            <span className="h-px w-6 bg-accent/40" />
-            <span className="text-[10px] font-medium uppercase tracking-[0.25em] text-white/40">
-              Builders &amp; Interiors
-            </span>
-            <span className="h-px w-6 bg-accent/40" />
-          </div>
+          {companyInfo.logo ? (
+            <Image
+              src={companyInfo.logo}
+              alt={companyInfo.name}
+              width={260}
+              height={61}
+              priority
+              className="h-12 w-auto object-contain md:h-14"
+            />
+          ) : (
+            <>
+              <span className="font-heading text-2xl font-semibold tracking-[0.3em] text-white sm:text-3xl md:text-4xl">
+                WHITE ROCK
+              </span>
+              <div className="flex items-center gap-3">
+                <span className="h-px w-6 bg-accent/40" />
+                <span className="text-[10px] font-medium uppercase tracking-[0.25em] text-white/40">
+                  Builders &amp; Interiors
+                </span>
+                <span className="h-px w-6 bg-accent/40" />
+              </div>
+            </>
+          )}
         </div>
 
         {/* Progress Bar */}

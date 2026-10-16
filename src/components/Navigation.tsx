@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect, useCallback } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { navLinks, companyInfo } from "@/data/content";
@@ -150,17 +151,28 @@ export default function Navigation() {
               aria-label={`${companyInfo.name} — Home`}
               data-cursor="link"
             >
-              <div className="flex flex-col">
-                <span className="font-heading text-lg font-semibold tracking-[0.15em] text-white md:text-xl">
-                  WHITE ROCK
-                </span>
-                <div className="flex items-center gap-2">
-                  <span className="h-px w-5 bg-accent opacity-70" />
-                  <span className="text-[9px] font-medium uppercase tracking-[0.2em] text-white/60 md:text-[10px]">
-                    Builders &amp; Interiors
+              {companyInfo.logo ? (
+                <Image
+                  src={companyInfo.logo}
+                  alt={companyInfo.name}
+                  width={220}
+                  height={52}
+                  priority
+                  className="h-9 w-auto md:h-11 object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+                />
+              ) : (
+                <div className="flex flex-col">
+                  <span className="font-heading text-lg font-semibold tracking-[0.15em] text-white md:text-xl">
+                    WHITE ROCK
                   </span>
+                  <div className="flex items-center gap-2">
+                    <span className="h-px w-5 bg-accent opacity-70" />
+                    <span className="text-[9px] font-medium uppercase tracking-[0.2em] text-white/60 md:text-[10px]">
+                      Builders &amp; Interiors
+                    </span>
+                  </div>
                 </div>
-              </div>
+              )}
             </a>
 
             {/* ----- Desktop Nav Links ----- */}
@@ -236,6 +248,17 @@ export default function Navigation() {
           role="navigation"
           aria-label="Mobile navigation"
         >
+          {companyInfo.logo && (
+            <div className="mb-2">
+              <Image
+                src={companyInfo.logo}
+                alt={companyInfo.name}
+                width={200}
+                height={48}
+                className="h-10 w-auto object-contain"
+              />
+            </div>
+          )}
           {navLinks.map((link, i) => (
             <a
               key={link.href}

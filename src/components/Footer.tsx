@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -171,6 +172,17 @@ export default function Footer() {
         >
           {/* Column 1: About */}
           <div className="flex flex-col gap-5">
+            {companyInfo.logo && (
+              <div className="mb-1">
+                <Image
+                  src={companyInfo.logo}
+                  alt={companyInfo.name}
+                  width={190}
+                  height={45}
+                  className="h-8 w-auto object-contain"
+                />
+              </div>
+            )}
             <h3 className="text-[13px] font-semibold uppercase tracking-[0.2em] text-accent">
               About
             </h3>
