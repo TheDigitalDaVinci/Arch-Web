@@ -4,7 +4,8 @@ import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { FaInstagram, FaYoutube, FaArrowUp } from "react-icons/fa";
+import { FaInstagram, FaYoutube, FaArrowUp, FaMapMarkerAlt, FaDirections } from "react-icons/fa";
+import { HiOutlineExternalLink } from "react-icons/hi";
 import { companyInfo, navLinks, services } from "@/data/content";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -269,6 +270,17 @@ export default function Footer() {
               <p className="text-sm leading-relaxed text-white/50">
                 {companyInfo.address}
               </p>
+              <a
+                href={companyInfo.googleMaps}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-1 inline-flex items-center gap-1.5 text-xs text-accent transition-colors hover:text-accent-light"
+                aria-label="View White Rock location on Google Maps"
+                data-cursor="link"
+              >
+                <FaMapMarkerAlt className="text-[11px]" />
+                <span>View on Google Maps</span>
+              </a>
             </address>
 
             {/* Newsletter */}
@@ -302,6 +314,123 @@ export default function Footer() {
                   Join
                 </button>
               </form>
+            </div>
+          </div>
+        </div>
+
+        {/* ===== Google Map Location Widget ===== */}
+        <div className="border-t border-white/10 pt-12 pb-14">
+          <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+            <div>
+              <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-accent">
+                Our Location
+              </span>
+              <h3 className="mt-1 font-heading text-2xl font-normal text-white md:text-3xl">
+                Visit Our Studio & Experience Center
+              </h3>
+            </div>
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href={companyInfo.googleMaps}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-accent transition-all duration-300 hover:bg-accent hover:text-secondary hover:shadow-lg hover:shadow-accent/20"
+                data-cursor="link"
+              >
+                <FaMapMarkerAlt className="text-xs" />
+                <span>Open in Google Maps</span>
+                <HiOutlineExternalLink className="text-xs" />
+              </a>
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=White+Rock+Foundations+Penta+Plaza+North+Paravur"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-white/80 transition-all duration-300 hover:border-white/40 hover:bg-white/10 hover:text-white"
+                data-cursor="link"
+              >
+                <FaDirections className="text-xs text-accent" />
+                <span>Get Directions</span>
+              </a>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-12">
+            {/* Office Details */}
+            <div className="flex flex-col justify-between gap-4 lg:col-span-4">
+              {/* Main Office Card */}
+              <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur-sm transition-all duration-300 hover:border-accent/40 hover:bg-white/[0.05]">
+                <div className="mb-2 flex items-center justify-between">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-accent">
+                    <FaMapMarkerAlt className="text-xs" />
+                    Main Office
+                  </span>
+                  <span className="rounded-full bg-accent/20 px-2 py-0.5 text-[10px] font-semibold text-accent">
+                    HQ
+                  </span>
+                </div>
+                <h4 className="font-heading text-lg font-medium text-white">
+                  Penta Plaza
+                </h4>
+                <p className="mt-1 text-xs leading-relaxed text-white/60">
+                  2nd Floor, Penta Plaza, North Paravur, Ernakulam, Kerala - 683513
+                </p>
+                <div className="mt-3 flex items-center justify-between border-t border-white/5 pt-3 text-[11px] text-white/50">
+                  <span>Mon – Sat: 9:00 AM – 6:30 PM</span>
+                  <a
+                    href={`tel:${companyInfo.phone}`}
+                    className="text-accent transition-colors hover:underline"
+                  >
+                    Call Studio
+                  </a>
+                </div>
+              </div>
+
+              {/* Branch Office Card */}
+              <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur-sm transition-all duration-300 hover:border-accent/40 hover:bg-white/[0.05]">
+                <div className="mb-2 flex items-center justify-between">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-accent">
+                    <FaMapMarkerAlt className="text-xs" />
+                    Branch Office
+                  </span>
+                  <span className="rounded-full bg-white/10 px-2 py-0.5 text-[10px] font-medium text-white/60">
+                    Thrissur
+                  </span>
+                </div>
+                <h4 className="font-heading text-lg font-medium text-white">
+                  KGM Arcade
+                </h4>
+                <p className="mt-1 text-xs leading-relaxed text-white/60">
+                  1st Floor, KGM Arcade, Koorkenchery, Thrissur, Kerala
+                </p>
+                <div className="mt-3 flex items-center justify-between border-t border-white/5 pt-3 text-[11px] text-white/50">
+                  <span>Mon – Sat: 9:00 AM – 6:30 PM</span>
+                  <a
+                    href={`tel:${companyInfo.phone}`}
+                    className="text-accent transition-colors hover:underline"
+                  >
+                    Call Branch
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Google Maps Interactive Embed */}
+            <div className="relative min-h-[340px] overflow-hidden rounded-2xl border border-white/15 bg-black/40 shadow-2xl lg:col-span-8 md:min-h-[380px]">
+              <iframe
+                title="White Rock Foundations Location Map"
+                src={companyInfo.mapEmbedUrl}
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: "340px" }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="h-full w-full object-cover filter contrast-[1.05]"
+              />
+              <div className="pointer-events-none absolute bottom-4 left-4 rounded-xl border border-white/10 bg-black/85 px-4 py-2 backdrop-blur-md shadow-lg">
+                <p className="text-xs font-semibold text-white">White Rock Foundations</p>
+                <p className="text-[11px] text-white/60">Penta Plaza, North Paravur</p>
+              </div>
             </div>
           </div>
         </div>

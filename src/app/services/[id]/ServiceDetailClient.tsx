@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Service } from "@/types";
 import { companyInfo } from "@/data/content";
+import Footer from "@/components/Footer";
 import {
   HiOutlineKey,
   HiOutlineOfficeBuilding,
@@ -456,6 +457,9 @@ export default function ServiceDetailClient({
           </div>
         </div>
       </section>
+
+      {/* Global Footer with Google Map Widget */}
+      <Footer />
 
       {/* Lightbox Image Zoom Modal */}
       {selectedPhoto && (

@@ -613,6 +613,8 @@ export const companyInfo = {
   email: "whiterockkerala@gmail.com",
   address: "Main Office: 2nd Floor, Penta Plaza, North Paravur, Ernakulam | Branch: 1st Floor, KGM Arcade, Koorkenchery, Thrissur",
   whatsapp: "+918075588549",
+  googleMaps: "https://share.google/eheHatE3KDkq9Mqks",
+  mapEmbedUrl: "https://maps.google.com/maps?q=White+Rock+Foundations,+Penta+Plaza,+North+Paravur&hl=en&z=16&output=embed",
   social: {
     instagram: "https://www.instagram.com/w.h.i.t.e_r.o.c.k/",
     youtube: "https://www.youtube.com/@W.h.i.t.e.R.o.c.k",
