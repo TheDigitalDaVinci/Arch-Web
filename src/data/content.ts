@@ -252,7 +252,11 @@ export const services: Service[] = [
       "/media/services/interior-design-execution/photos/WhatsApp Image 2025-09-26 at 16.55.23 (1).jpeg",
       "/media/services/interior-design-execution/photos/WhatsApp Image 2025-09-26 at 16.55.25.jpeg",
     ],
-    videos: [],
+    videos: [
+      "/media/services/interior-design-execution/videos/Amal.mp4",
+      "/media/services/interior-design-execution/videos/Amal Peacock Design.mp4",
+      "/media/services/interior-design-execution/videos/Kai Reel.mp4",
+    ],
     render360Url: "https://thedigitaldavinci.github.io/Shiyab-Interior-Updated-360/",
     render360List: [
       {
@@ -347,7 +351,11 @@ export const services: Service[] = [
       "/media/services/commercial-interiors/photos/Gemini_Generated_Image_jgh5lljgh5lljgh5.png",
       "/media/services/commercial-interiors/photos/Gemini_Generated_Image_jua2mxjua2mxjua2.png",
     ],
-    videos: [],
+    videos: [
+      "/media/services/commercial-interiors/videos/Kai Reel.mp4",
+      "/media/services/commercial-interiors/videos/Kaitharan B&A.mp4",
+      "/media/services/commercial-interiors/videos/Maxilofolix Ongoing.mp4",
+    ],
     render360Url: "",
     features: [
       "Brand-Centric Architectural Identity",
@@ -418,8 +426,11 @@ export const services: Service[] = [
       "/media/services/hospital-interiors/photos/Scene 25.png",
       "/media/services/hospital-interiors/photos/Scene 26.png",
       "/media/services/hospital-interiors/photos/Scene 27.png",
+      "/media/services/hospital-interiors/photos/Gemini_Generated_Image_jua2mxjua2mxjua2.png",
     ],
-    videos: [],
+    videos: [
+      "/media/services/hospital-interiors/videos/Maxilofolix Ongoing.mp4",
+    ],
     render360Url: "",
     features: [
       "Antimicrobial & Seamless Vinyl Finishes",
@@ -438,7 +449,9 @@ export const services: Service[] = [
     photos: [
       "/media/services/hotels-restaurant-interiors/photos/Image_2(2).png",
     ],
-    videos: [],
+    videos: [
+      "/media/services/hotels-restaurant-interiors/videos/Neram Cafe.mp4",
+    ],
     render360Url: "",
     features: [
       "Atmospheric Mood & Dimming Architecture",
@@ -460,7 +473,9 @@ export const services: Service[] = [
       "/images/interiors/dining.jpg",
       "/images/projects/project-5.jpg",
     ],
-    videos: [],
+    videos: [
+      "/media/services/cafe-interiors/videos/Neram Cafe.mp4",
+    ],
     render360Url: "",
     features: [
       "Feature Walls & Instagrammable Vignettes",

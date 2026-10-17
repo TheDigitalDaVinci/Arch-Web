@@ -269,20 +269,33 @@ export default function ServiceDetailClient({
             <div className="space-y-8">
               {videos.length > 0 ? (
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                  {videos.map((videoSrc, idx) => (
-                    <div
-                      key={idx}
-                      className="overflow-hidden rounded-2xl border border-white/10 bg-black shadow-2xl relative"
-                    >
-                      <video
-                        controls
-                        className="w-full aspect-video object-cover"
-                        src={videoSrc}
+                  {videos.map((videoSrc, idx) => {
+                    const videoTitle = decodeURIComponent(videoSrc.split("/").pop() || "").replace(/\.mp4$/i, "");
+                    return (
+                      <div
+                        key={idx}
+                        className="overflow-hidden rounded-2xl border border-white/10 bg-black shadow-2xl relative flex flex-col"
                       >
-                        Your browser does not support the video tag.
-                      </video>
-                    </div>
-                  ))}
+                        <video
+                          controls
+                          playsInline
+                          preload="metadata"
+                          className="w-full aspect-video object-cover bg-black"
+                          src={encodeURI(videoSrc)}
+                        >
+                          Your browser does not support the video tag.
+                        </video>
+                        <div className="p-4 bg-zinc-900/90 border-t border-white/10 flex items-center justify-between">
+                          <span className="text-xs font-semibold text-white/90 truncate max-w-[75%]">
+                            {videoTitle}
+                          </span>
+                          <span className="text-[10px] font-mono uppercase tracking-wider text-accent bg-accent/10 px-2.5 py-1 rounded-full border border-accent/20 shrink-0">
+                            HD Walkthrough
+                          </span>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               ) : (
                 <div className="flex flex-col items-center justify-center py-16 px-4 text-center rounded-2xl border border-white/10 bg-white/[0.02]">
