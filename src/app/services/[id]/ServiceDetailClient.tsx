@@ -261,56 +261,42 @@ export default function ServiceDetailClient({
                   </div>
                 </div>
               ))}
-
-              {/* Photo Upload Placeholder Card */}
-              <div className="group relative aspect-[4/3] flex flex-col items-center justify-center p-6 rounded-2xl border-2 border-dashed border-accent/30 bg-accent/[0.03] hover:bg-accent/[0.06] hover:border-accent/60 transition-all duration-300 text-center">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/10 text-accent mb-3 border border-accent/20 group-hover:scale-110 transition-transform">
-                  <HiOutlinePhotograph size={24} />
-                </div>
-                <span className="text-xs font-semibold uppercase tracking-wider text-accent mb-1">
-                  + Add Project Photo
-                </span>
-                <p className="text-[11px] text-white/50 max-w-[200px] leading-relaxed">
-                  Place images in <br />
-                  <code className="text-accent/80 font-mono">public/media/services/{service.id}/photos/</code>
-                </p>
-              </div>
             </div>
           )}
 
           {/* TAB 2: Video Showcase */}
           {activeTab === "videos" && (
             <div className="space-y-8">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                {videos.map((videoSrc, idx) => (
-                  <div
-                    key={idx}
-                    className="overflow-hidden rounded-2xl border border-white/10 bg-black shadow-2xl relative"
-                  >
-                    <video
-                      controls
-                      className="w-full aspect-video object-cover"
-                      src={videoSrc}
+              {videos.length > 0 ? (
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  {videos.map((videoSrc, idx) => (
+                    <div
+                      key={idx}
+                      className="overflow-hidden rounded-2xl border border-white/10 bg-black shadow-2xl relative"
                     >
-                      Your browser does not support the video tag.
-                    </video>
-                  </div>
-                ))}
-
-                {/* Video Upload Placeholder Card */}
-                <div className="flex flex-col items-center justify-center p-8 rounded-2xl border-2 border-dashed border-accent/30 bg-accent/[0.03] hover:bg-accent/[0.06] hover:border-accent/60 transition-all duration-300 text-center aspect-video">
+                      <video
+                        controls
+                        className="w-full aspect-video object-cover"
+                        src={videoSrc}
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="flex flex-col items-center justify-center py-16 px-4 text-center rounded-2xl border border-white/10 bg-white/[0.02]">
                   <div className="flex h-14 w-14 items-center justify-center rounded-full bg-accent/10 text-accent mb-4 border border-accent/20">
-                    <HiOutlineVideoCamera size={28} />
+                    <HiOutlineVideoCamera size={26} />
                   </div>
-                  <span className="text-xs font-semibold uppercase tracking-widest text-accent mb-2">
-                    + Add Project Video
-                  </span>
-                  <p className="text-xs text-white/60 max-w-xs leading-relaxed">
-                    Place walkthrough videos (.mp4) in <br />
-                    <code className="text-accent/90 font-mono text-[11px] block mt-1">public/media/services/{service.id}/videos/</code>
+                  <h4 className="font-heading text-lg font-medium text-white mb-2">
+                    Cinematic Walkthroughs Coming Soon
+                  </h4>
+                  <p className="text-xs text-white/50 max-w-md leading-relaxed">
+                    Walkthrough videos for our {service.title.toLowerCase()} projects are currently in production.
                   </p>
                 </div>
-              </div>
+              )}
             </div>
           )}
 
@@ -373,23 +359,22 @@ export default function ServiceDetailClient({
                   </div>
 
                   <span className="text-xs font-semibold uppercase tracking-[0.25em] text-accent block mb-2">
-                    Interactive 360° Render Studio
+                    Interactive 360° VR Spatial Experience
                   </span>
                   <h3 className="font-heading text-2xl sm:text-3xl text-white mb-4">
-                    Embed 360° Walkthrough Renders
+                    Virtual Tours Available on Request
                   </h3>
-                  <p className="text-sm sm:text-base text-white/80 leading-relaxed max-w-xl mx-auto mb-8">
-                    We support full embedded panoramic VR renders from **Kuula**, **Matterport**, **Momento360**, or **Pannellum**. Share your 360° links to view interactive spatial walkthroughs directly inside this website.
+                  <p className="text-sm sm:text-base text-white/80 leading-relaxed max-w-xl mx-auto mb-6">
+                    We offer interactive spatial VR walkthroughs of our portfolio during private consultations. Contact our studio to experience your space in full 360-degree immersion.
                   </p>
-
-                  <div className="rounded-xl border border-white/10 bg-black/60 p-6 text-left max-w-lg mx-auto">
-                    <p className="text-xs font-semibold text-accent uppercase tracking-wider mb-2">
-                      💡 How to activate:
-                    </p>
-                    <p className="text-xs text-white/70 leading-relaxed">
-                      Simply share your 360° render link (e.g. Kuula or Matterport URL) and it will be embedded into this view for clients to tour in 360 degrees!
-                    </p>
-                  </div>
+                  <a
+                    href={companyInfo.consultationForm}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full border border-accent bg-accent/10 px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-accent hover:bg-accent hover:text-secondary transition-all duration-300"
+                  >
+                    Request 360° VR Tour
+                  </a>
                 </div>
               )}
             </div>
