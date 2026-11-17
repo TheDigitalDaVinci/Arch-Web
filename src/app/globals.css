@@ -35,13 +35,7 @@
    BASE STYLES
    ============================================ */
 * {
-  cursor: none;
-}
-
-@media (max-width: 768px) {
-  * {
-    cursor: auto;
-  }
+  cursor: auto;
 }
 
 ::selection {
@@ -210,60 +204,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================
-   REVEAL ANIMATIONS
+   REVEAL STYLES (STATIC & VISIBLE)
    ============================================ */
-.reveal-up {
-  opacity: 0;
-  transform: translateY(60px);
-}
-
-.reveal-down {
-  opacity: 0;
-  transform: translateY(-60px);
-}
-
-.reveal-left {
-  opacity: 0;
-  transform: translateX(-60px);
-}
-
-.reveal-right {
-  opacity: 0;
-  transform: translateX(60px);
-}
-
-.reveal-scale {
-  opacity: 0;
-  transform: scale(0.85);
-}
-
+.reveal-up,
+.reveal-down,
+.reveal-left,
+.reveal-right,
+.reveal-scale,
 .reveal-rotate {
-  opacity: 0;
-  transform: rotate3d(1, 0, 0, 15deg);
-  transform-origin: bottom;
+  opacity: 1 !important;
+  transform: none !important;
 }
 
 /* ============================================
    CLIP PATH REVEALS
    ============================================ */
-.clip-reveal-up {
-  clip-path: inset(100% 0 0 0);
-}
-
-.clip-reveal-down {
-  clip-path: inset(0 0 100% 0);
-}
-
-.clip-reveal-left {
-  clip-path: inset(0 100% 0 0);
-}
-
-.clip-reveal-right {
-  clip-path: inset(0 0 0 100%);
-}
-
+.clip-reveal-up,
+.clip-reveal-down,
+.clip-reveal-left,
+.clip-reveal-right,
 .clip-revealed {
-  clip-path: inset(0 0 0 0);
+  clip-path: none !important;
 }
 
 /* ============================================
@@ -275,8 +236,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .parallax-image {
-  will-change: transform;
-  transform: scale(1.2);
+  transform: none !important;
 }
 
 /* ============================================
@@ -295,19 +255,9 @@ h1, h2, h3, h4, h5, h6 {
 /* ============================================
    MARQUEE
    ============================================ */
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
 .marquee-track {
   display: flex;
-  animation: marquee 30s linear infinite;
-  width: fit-content;
-}
-
-.marquee-track:hover {
-  animation-play-state: paused;
+  width: 100%;
 }
 
 /* ============================================
@@ -424,24 +374,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================
-   FLOATING ELEMENTS
+   FLOATING ELEMENTS (ANIMATIONS DISABLED)
    ============================================ */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-}
-
-@keyframes float-slow {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-15px) rotate(3deg); }
-}
-
-.floating {
-  animation: float 6s ease-in-out infinite;
-}
-
+.floating,
 .floating-slow {
-  animation: float-slow 8s ease-in-out infinite;
+  animation: none !important;
 }
 
 /* ============================================

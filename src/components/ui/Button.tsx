@@ -1,7 +1,6 @@
 "use client";
 
 import { type ReactNode } from "react";
-import MagneticButton from "@/components/animations/MagneticButton";
 
 interface ButtonProps {
   children: ReactNode;
@@ -22,11 +21,10 @@ export default function Button({
   className = "",
   onClick,
   href,
-  magnetic = true,
   ...props
 }: ButtonProps) {
   const baseStyles =
-    "relative inline-flex items-center justify-center font-sans font-medium tracking-wide transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] overflow-hidden group";
+    "relative inline-flex items-center justify-center font-sans font-medium tracking-wide transition-colors duration-200 overflow-hidden";
 
   const variants = {
     primary:
@@ -47,40 +45,17 @@ export default function Button({
 
   const allStyles = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`;
 
-  const content = (
-    <>
-      {/* Ripple effect background */}
-      <span className="absolute inset-0 bg-white/10 scale-0 group-hover:scale-100 rounded-full transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" />
-      <span className="relative z-10 flex items-center gap-2">{children}</span>
-    </>
-  );
-
-  if (magnetic) {
-    if (href) {
-      return (
-        <MagneticButton as="a" href={href} className={allStyles} {...props}>
-          {content}
-        </MagneticButton>
-      );
-    }
-    return (
-      <MagneticButton as="button" onClick={onClick} className={allStyles} {...props}>
-        {content}
-      </MagneticButton>
-    );
-  }
-
   if (href) {
     return (
       <a href={href} className={allStyles} {...props}>
-        {content}
+        {children}
       </a>
     );
   }
 
   return (
     <button onClick={onClick} className={allStyles} {...props}>
-      {content}
+      {children}
     </button>
   );
 }

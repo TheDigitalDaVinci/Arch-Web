@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import CustomCursor from "@/components/CustomCursor";
 import FloatingButtons from "@/components/FloatingButtons";
 
 export const metadata: Metadata = {
@@ -73,7 +72,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="min-h-screen overflow-x-hidden bg-background text-text">
-        <CustomCursor />
         <FloatingButtons />
         {children}
         {/* Noise overlay for premium grain texture */}

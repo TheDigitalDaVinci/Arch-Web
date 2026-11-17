@@ -1,9 +1,6 @@
 "use client";
 
-import { useRef } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 import { services } from "@/data/content";
 import type { Service } from "@/types";
 
@@ -23,8 +20,6 @@ import {
 import { GiPalmTree } from "react-icons/gi";
 import type { IconType } from "react-icons";
 
-gsap.registerPlugin(ScrollTrigger);
-
 const iconMap: Record<string, IconType> = {
   turnkey: HiOutlineKey,
   interior: MdOutlineDesignServices,
@@ -38,8 +33,6 @@ const iconMap: Record<string, IconType> = {
   cafe: MdOutlineLocalCafe,
 };
 
-import Link from "next/link";
-
 interface ServiceCardProps {
   service: Service;
   index: number;
@@ -50,16 +43,15 @@ function ServiceCard({ service, index }: ServiceCardProps) {
 
   return (
     <article
-      className="service-card group rounded-2xl p-8 lg:p-10 transition-all duration-500 border bg-white/[0.03] hover:bg-white/[0.06] border-white/10 hover:border-accent/40 hover:shadow-2xl hover:shadow-accent/5 flex flex-col justify-between"
+      className="group rounded-2xl p-8 lg:p-10 border bg-white/[0.03] hover:bg-white/[0.06] border-white/10 hover:border-accent/40 shadow-xl flex flex-col justify-between transition-colors duration-300"
       aria-label={service.title}
     >
       <div>
         {/* Icon & Number Header */}
         <div className="flex items-center justify-between mb-6">
-          <div className="inline-flex items-center justify-center rounded-xl p-3.5 bg-white/5 text-accent group-hover:bg-accent/15 group-hover:scale-105 transition-all duration-300">
+          <div className="inline-flex items-center justify-center rounded-xl p-3.5 bg-white/5 text-accent group-hover:bg-accent/15 transition-colors duration-300">
             <Icon
               size={32}
-              className="transition-transform duration-500 ease-out group-hover:scale-110"
               aria-hidden="true"
             />
           </div>
@@ -85,7 +77,7 @@ function ServiceCard({ service, index }: ServiceCardProps) {
           {service.features.map((feature, featureIndex) => (
             <li
               key={featureIndex}
-              className="feature-item flex items-center gap-3 text-sm text-white/80"
+              className="flex items-center gap-3 text-sm text-white/80"
             >
               <span
                 className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-accent/20"
@@ -115,13 +107,12 @@ function ServiceCard({ service, index }: ServiceCardProps) {
       <div className="pt-6 border-t border-white/10 mt-2 flex items-center justify-between">
         <Link
           href={`/services/${service.id}`}
-          className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent group-hover:text-white transition-colors duration-300 link-underline"
-          data-cursor="view"
+          className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent group-hover:text-white transition-colors duration-300"
           aria-label={`View ${service.title} portfolio and 360 renders`}
         >
           <span>View Portfolio &amp; 360° Renders</span>
           <svg
-            className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 text-accent"
+            className="w-4 h-4 text-accent"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -140,93 +131,10 @@ function ServiceCard({ service, index }: ServiceCardProps) {
 }
 
 export default function ServicesSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useGSAP(
-    () => {
-      const mm = gsap.matchMedia();
-
-      mm.add("(min-width: 768px)", () => {
-        // Section heading
-        gsap.fromTo(
-          ".services-heading",
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            stagger: 0.1,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: ".services-heading",
-              start: "top 85%",
-              toggleActions: "play none none none",
-            },
-          }
-        );
-
-        // Card stagger
-        gsap.fromTo(
-          ".service-card",
-          { opacity: 0, y: 40 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            stagger: 0.08,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: ".services-grid",
-              start: "top 85%",
-              toggleActions: "play none none none",
-            },
-          }
-        );
-      });
-
-      mm.add("(max-width: 767px)", () => {
-        gsap.fromTo(
-          ".services-heading",
-          { opacity: 0, y: 20 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: ".services-heading",
-              start: "top 90%",
-              toggleActions: "play none none none",
-            },
-          }
-        );
-
-        gsap.fromTo(
-          ".service-card",
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.5,
-            stagger: 0.06,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: ".services-grid",
-              start: "top 90%",
-              toggleActions: "play none none none",
-            },
-          }
-        );
-      });
-    },
-    { scope: containerRef }
-  );
-
   return (
     <section
-      ref={containerRef}
       id="services"
-      className="relative section-padding bg-secondary"
+      className="relative py-24 md:py-32 bg-secondary"
       aria-labelledby="services-title"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -243,23 +151,23 @@ export default function ServicesSection() {
             05
           </span>
 
-          <p className="services-heading text-accent text-xs md:text-sm uppercase tracking-[0.3em] mb-2 font-semibold relative z-10">
+          <p className="text-accent text-xs md:text-sm uppercase tracking-[0.3em] mb-2 font-semibold relative z-10">
             Capabilities &amp; Solutions
           </p>
 
           <h2
             id="services-title"
-            className="services-heading font-heading text-4xl text-white sm:text-5xl lg:text-6xl relative z-10"
+            className="font-heading text-4xl text-white sm:text-5xl lg:text-6xl relative z-10"
           >
             Our Services
           </h2>
-          <p className="services-heading mt-4 max-w-2xl text-base leading-relaxed text-white/70 lg:text-lg relative z-10">
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/70 lg:text-lg relative z-10">
             Comprehensive architectural, interior, and turnkey solutions engineered for enduring luxury and flawless execution.
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="services-grid grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {services.map((service, index) => (
             <ServiceCard
               key={service.id}

@@ -1,10 +1,6 @@
 "use client";
 
-import { ReactLenis } from "lenis/react";
-import GSAPProvider from "@/providers/GSAPProvider";
-import CustomCursor from "@/components/CustomCursor";
 import Navigation from "@/components/Navigation";
-import FloatingButtons from "@/components/FloatingButtons";
 import Footer from "@/components/Footer";
 
 // Section imports
@@ -25,38 +21,27 @@ import CTASection from "@/components/sections/CTASection";
 
 export default function Home() {
   return (
-    <ReactLenis
-      root
-      options={{
-        lerp: 0.07,
-        duration: 1.2,
-        smoothWheel: true,
-        wheelMultiplier: 1.0,
-        touchMultiplier: 1.5,
-      }}
-    >
-      <GSAPProvider>
-        <Navigation />
+    <>
+      <Navigation />
 
-        <main className="relative bg-background text-text overflow-hidden">
-          <HeroSection />
-          <WhoWeAre />
-          <OurExpertise />
-          <OurProcess />
-          <FeaturedProjects />
-          <BeforeAfter />
-          <InteriorsGallery />
-          <ServicesSection />
-          <TeamSection />
-          <VideoShowcase />
-          <AwardsClients />
-          <Statistics />
-          <FAQ />
-          <CTASection />
-        </main>
+      <main className="relative bg-background text-text overflow-hidden">
+        <HeroSection />
+        <WhoWeAre />
+        <OurExpertise />
+        <OurProcess />
+        <FeaturedProjects />
+        <BeforeAfter />
+        <InteriorsGallery />
+        <ServicesSection />
+        <TeamSection />
+        <VideoShowcase />
+        <AwardsClients />
+        <Statistics />
+        <FAQ />
+        <CTASection />
+      </main>
 
-        <Footer />
-      </GSAPProvider>
-    </ReactLenis>
+      <Footer />
+    </>
   );
 }

@@ -1,14 +1,7 @@
 "use client";
 
-import { useRef } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useCountUp } from "@/hooks/useCountUp";
 import { statistics } from "@/data/content";
 import type { Statistic } from "@/types";
-
-gsap.registerPlugin(ScrollTrigger);
 
 function StatItem({
   stat,
@@ -17,22 +10,14 @@ function StatItem({
   stat: Statistic;
   isLast: boolean;
 }) {
-  const countRef = useCountUp({
-    end: stat.value,
-    duration: 2.5,
-    suffix: "",
-    triggerStart: "top 80%",
-  });
-
   return (
-    <div className="stat-item flex flex-col items-center text-center relative px-4 md:px-8">
+    <div className="flex flex-col items-center text-center relative px-4 md:px-8">
       <div className="flex items-baseline">
         <span
-          ref={countRef}
           className="text-6xl md:text-8xl xl:text-9xl font-heading text-white leading-none"
           aria-label={`${stat.value}${stat.suffix}`}
         >
-          0
+          {stat.value}
         </span>
         <span className="text-accent text-4xl md:text-6xl xl:text-7xl font-heading ml-1">
           {stat.suffix}
@@ -54,29 +39,8 @@ function StatItem({
 }
 
 export default function Statistics() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useGSAP(
-    () => {
-      gsap.from(".stat-item", {
-        opacity: 0,
-        y: 60,
-        duration: 1,
-        stagger: 0.15,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".stats-grid",
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
-      });
-    },
-    { scope: containerRef }
-  );
-
   return (
     <section
-      ref={containerRef}
       className="bg-secondary relative py-24 md:py-32 overflow-hidden"
       aria-label="Company statistics"
     >
@@ -87,7 +51,7 @@ export default function Statistics() {
       />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        <div className="stats-grid grid grid-cols-2 xl:grid-cols-4 gap-12 md:gap-8">
+        <div className="grid grid-cols-2 xl:grid-cols-4 gap-12 md:gap-8">
           {statistics.map((stat, index) => (
             <StatItem
               key={stat.label}
