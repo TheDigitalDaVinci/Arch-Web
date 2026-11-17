@@ -2,7 +2,6 @@
 
 import { ReactLenis } from "lenis/react";
 import GSAPProvider from "@/providers/GSAPProvider";
-import LoadingScreen from "@/components/LoadingScreen";
 import CustomCursor from "@/components/CustomCursor";
 import Navigation from "@/components/Navigation";
 import FloatingButtons from "@/components/FloatingButtons";
@@ -37,7 +36,6 @@ export default function Home() {
       }}
     >
       <GSAPProvider>
-        <LoadingScreen />
         <Navigation />
 
         <main className="relative bg-background text-text overflow-hidden">
